@@ -8,6 +8,13 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     
+    url(r'^logout/$','users.user_logout',name="home"),
     
-    url(r'^home/$','crm.views.home',name="home")
+    url(r'^$','users.user_login',name="home"),
+    
+    
+    url(r'^home/$','crm.views.home',name="home"),
+    url(r'^org-list/$','crm.views.org_list',name="home"),
+    
+    
 )
