@@ -85,6 +85,7 @@ def printit():
 from django.views import generic as g
 from django.db.models import get_model
 from django.http import HttpResponseRedirect
+from models import Company
 
 
 class ManageBase(object):
@@ -99,6 +100,26 @@ class ManageBase(object):
             'company': ('name','address','location','type_of_company', ), 'requirement': ('position', 'no_openings','technology','skills','experience','location','type_of_opening','salary_range' )
         }[self.kwargs.get('model')]
         return super(ManageBase, self).get_form_class()
+
+
+    def get_queryset(self,*args, **kwargs):
+
+        modl = self.kwargs['model']
+        
+        if modl == 'requirement':
+            return Requirement.objects.filter(company_id = self.kwargs['pk'])
+        if modl == 'company':
+            return Company.objects.all()
+
+    def form_valid(self, form):
+        # import ipdb;ipdb.set_trace()
+        if self.kwargs['model'] == 'requirement':
+            self.object = form.save()
+            self.object.company = Company.objects.get(id = self.kwargs['pk'])
+            self.object.save()
+            return HttpResponseRedirect('/masterdata/requirement/list/%s'%(self.kwargs['pk']))
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class List(ManageBase, g.ListView):

@@ -80,7 +80,7 @@ class Company(Base):
     type_of_company = models.CharField(max_length=100, blank=True, null=True)       
     
     def __unicode__(self):
-        return self.first_name
+        return self.name
 
 
 
@@ -88,6 +88,7 @@ class Company(Base):
 
 
 class Requirement(Base):
+    company = models.ForeignKey(Company, blank=True, null=True)
     position = models.CharField(max_length=100, blank=True, null=True)
     no_openings = models.CharField(max_length=100, blank=True, null=True)
     technology = models.CharField(max_length=100, blank=True, null=True)

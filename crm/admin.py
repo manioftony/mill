@@ -4,3 +4,5 @@ from crm.models import *
 
 admin.site.register(OrgInfo)
 admin.site.register(Company)
+admin.site.register(Requirement)
+
