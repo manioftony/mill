@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+
+{% block midpart %}
+
+
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+
+ <!--    Name
+    Address
+    Location
+    Type 0f Company
+
+ -->
+
+
+
+<div class="box col-md-4">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-user"></i> Company  Information</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="box-content">
+                    <ul class="dashboard-list">
+                        <li>
+<!--                             <a href="#">
+                                <img class="dashboard-avatar" alt="Usman" src="http://www.gravatar.com/avatar/f0ea51fa1e4fae92608d8affee12f67b.png?s=50"></a> -->
+                            <strong>Name:</strong>{{obj.name}}</a><br>
+                            <strong>Address:</strong>{{obj.address}}<br>
+                            <strong>Location:</strong>{{obj.location}}<br>
+                            <strong>Type Of company:</strong>{{obj.type_of_company}}<br>
+                        </li>
+                        <a href="/masterdata/requirement/create/">Add Requirement</a>
+                    </ul>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </div><!--/row-->
+
+
+
+
+
+
+
+
+{% endblock %}

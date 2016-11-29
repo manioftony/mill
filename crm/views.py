@@ -30,6 +30,13 @@ def org_list(request):
 
 
 
+def sales(request):
+    return render(request,'orginfo/sales.html',locals())
+
+
+def company_list(request):
+    return render(request,'orginfo/company_list.html',locals())
+
 
 
 def get_current_info():
@@ -51,11 +58,113 @@ def update_org_info():
 
 
 
+
+def company_info(request,pid):
+    obj = Company.objects.get(id=pid)
+    return render(request,'orginfo/company_info.html',locals())
+
+def recur_info(request):
+    object_list = Requirement.objects.all()
+    return render(request,'orginfo/recruitor.html',locals())
+
+
+
+
+
 import threading
 
 def printit():
   threading.Timer(5.0, printit).start()
   print "Hello, World!"
+
+
+
+
+
+
+from django.views import generic as g
+from django.db.models import get_model
+from django.http import HttpResponseRedirect
+
+
+class ManageBase(object):
+
+    @property
+    def model(self):
+        return get_model('crm', self.kwargs.get('model'))
+
+    def get_form_class(self):
+
+        self.fields = {
+            'company': ('name','address','location','type_of_company', ), 'requirement': ('position', 'no_openings','technology','skills','experience','location','type_of_opening','salary_range' )
+        }[self.kwargs.get('model')]
+        return super(ManageBase, self).get_form_class()
+
+
+class List(ManageBase, g.ListView):
+    template_name = 'orginfo/company_list.html'
+
+
+class FormBase(ManageBase):
+
+    template_name = 'masterdata/add-edit.html'
+
+    def get_success_url(self):
+        return "/masterdata/%s/list/" % (
+            self.kwargs.get('model'))
+
+
+class Create(FormBase, g.CreateView):
+    pass
+
+
+class Update(FormBase, g.UpdateView):
+    pass
+
+
+class Delete(FormBase, g.DeleteView):
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+
+
+class Status(Delete):
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.switch()
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

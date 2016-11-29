@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+
+{% block midpart %}
+
+
+
+
+
+
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+    <div class="box col-md-12">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+            {% if view.kwargs.model == 'company' %}
+
+        <h2><i class="glyphicon glyphicon-user"></i> Organsation information</h2>
+
+            {% elif view.kwargs.model == 'requirement' %}
+
+        <h2><i class="glyphicon glyphicon-user"></i> Requirement information</h2>
+
+            {% endif %}
+
+        {% if view.kwargs.model == 'company' %}
+            <a href="/masterdata/company/create/"><i class="glyphicon"></i>
+        Add </a>
+        {% endif %}
+
+<!--         <div class="box-icon">
+            <a href="/masterdata/company/create/" class="btn btn-setting btn-round btn-default"><i class="glyphicon"></i></a>
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+ -->
+
+
+    </div>
+    <div class="box-content">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        {% if view.kwargs.model == 'company' %}
+            <th>Name</th>
+            <th>Address</th>
+            <th>Location</th>
+            <th>Type Of Company</th>
+        {% elif view.kwargs.model == 'requirement' %}
+
+            <th>Position</th>
+            <th>No.of Openings</th>
+            <th>Technology</th>
+            <th>Skills</th>
+            <th>Experience</th>
+            <th>Location</th>
+            <th>Type of Opening</th>
+            <th>Salary Range</th>
+
+
+        {% endif %}        
+
+    </tr>
+    </thead>
+    <tbody>
+
+{% if view.kwargs.model == 'company' %}
+
+    {% for i in object_list %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td class="center">{{i.address}}</td>
+            <td class="center">{{i.location}}</td>
+            <td class="center">{{i.type_of_company}}</td>
+            <td class="center">
+                <a class="btn btn-success" href="/company_info/{{i.id}}">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+                </a>
+            </td>
+
+
+        </tr>
+    {% endfor %}
+
+{% elif view.kwargs.model == 'requirement' %}
+
+
+    {% for i in object_list %}
+        <tr>
+            <td>{{i.position}}</td>
+            <td class="center">{{i.no_openings}}</td>
+            <td class="center">{{i.technology}}</td>
+            <td class="center">{{i.skills}}</td>
+            <td class="center">{{i.experience}}</td>
+            <td class="center">{{i.location}}</td>
+            <td class="center">{{i.type_of_opening}}</td>
+            <td class="center">{{i.salary_range}}</td>
+        </tr>
+    {% endfor %}
+
+
+{% endif %}
+
+
+
+
+
+
+
+             
+
+
+
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <!--/span-->
+
+    </div><!--/row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

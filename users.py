@@ -14,7 +14,7 @@ from crm.forms import *
 def user_login(request):
 #    import ipdb;ipdb.set_trace()
     if request.user.is_authenticated():
-        return HttpResponseRedirect('/org-list/')
+        return HttpResponseRedirect('/sales-list/')
     form = LoginForm()
     if request.method != 'POST':
         return render(request, 'login.html', locals())
