@@ -3,6 +3,13 @@ from django.http import HttpResponse,HttpResponseRedirect
 from crm.models import *
 import requests
 import json
+from django.views import generic as g
+from django.db.models import get_model
+from django.http import HttpResponseRedirect
+from models import Company 
+
+
+
 
 # Create your views here.
 
@@ -31,6 +38,8 @@ def org_list(request):
 
 
 def sales(request):
+    com_obj = Company.objects.all().count()
+    sal_obj = Requirement.objects.all().count()
     return render(request,'orginfo/sales.html',locals())
 
 
@@ -110,12 +119,6 @@ def printit():
 
 
 
-
-
-from django.views import generic as g
-from django.db.models import get_model
-from django.http import HttpResponseRedirect
-from models import Company
 
 
 class ManageBase(object):
