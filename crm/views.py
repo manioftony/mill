@@ -67,6 +67,12 @@ def recur_info(request):
     object_list = Requirement.objects.all()
     return render(request,'orginfo/recruitor.html',locals())
 
+def recur_info_data(request,pid,model):
+    # import ipdb;ipdb.set_trace()
+    obj = Requirement.objects.get(id=pid)
+    obj.current_status = {'open':1,'inprogress':2}.get(model)
+    obj.save()
+    return HttpResponseRedirect("/recur_info/")
 
 
 

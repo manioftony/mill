@@ -17,8 +17,8 @@ urlpatterns = patterns('',
     url(r'^sales-list/$','crm.views.sales',name="home"),
     url(r'^company-list/$','crm.views.company_list',name="home"),
     url(r'^company_info/(?P<pid>\d+)$','crm.views.company_info',name="home"),
-    url(r'^recur_info/$','crm.views.recur_info',name='home')
-
+    url(r'^recur_info/$','crm.views.recur_info',name='home'),
+    url(r'^recur_info/(?P<model>(:?open|inprogress|close))/(?P<pid>\d+)$','crm.views.recur_info_data',name="home"),
     
     
 )

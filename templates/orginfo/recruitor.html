@@ -46,19 +46,19 @@
         <td>{{i.unique_id}}<br><br>
 
         {% if i.current_status == None %}
-            <a href="/{{i.id}}/">Open</a><br>
+            <a href="/recur_info/open/{{i.id}}">Open</a><br>
         {% endif %}
         </td>
         
         <td class="center"><br><br>
             {% if i.current_status == 1 %}
-            <span class="label label-info"><a href="">In progress</a></span>
+            <span class="label label-info"><a href="/recur_info/inprogress/{{i.id}}">In progress</a></span>
             {% endif %}
         </td>
         
         <td class="center"><br><br>
             {% if i.current_status == 2 %}
-            <span class="label label-danger"><a href="">closed</a></span>
+            <span class="label label-danger"><a href="#">closed</a></span>
             {% endif %}
         </td>
     </tr>
