@@ -85,9 +85,10 @@ class Company(Base):
 
 
 
-
+cur_status = ((0,'open'),(1,'In progress'),(2,'closed'))
 
 class Requirement(Base):
+    current_status = models.IntegerField(choices = cur_status, blank = True, null = True)
     company = models.ForeignKey(Company, blank=True, null=True)
     position = models.CharField(max_length=100, blank=True, null=True)
     no_openings = models.CharField(max_length=100, blank=True, null=True)
@@ -97,11 +98,10 @@ class Requirement(Base):
     location = models.CharField(max_length=100, blank=True, null=True)
     type_of_opening = models.CharField(max_length=100, blank=True, null=True)
     salary_range = models.CharField(max_length=100, blank=True, null=True)
+    unique_id = models.CharField(null=True, max_length=100, unique=True)
 
     def __unicode__(self):
         return self.position
-
-
 
 
 

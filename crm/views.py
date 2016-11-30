@@ -105,17 +105,17 @@ class ManageBase(object):
     def get_queryset(self,*args, **kwargs):
 
         modl = self.kwargs['model']
-        
+
         if modl == 'requirement':
             return Requirement.objects.filter(company_id = self.kwargs['pk'])
         if modl == 'company':
             return Company.objects.all()
 
     def form_valid(self, form):
-        # import ipdb;ipdb.set_trace()
         if self.kwargs['model'] == 'requirement':
             self.object = form.save()
             self.object.company = Company.objects.get(id = self.kwargs['pk'])
+            self.object.unique_id = str('%s%s000%s'%(self.object.company.name[:3],self.object.position[:3],self.object.company.id))
             self.object.save()
             return HttpResponseRedirect('/masterdata/requirement/list/%s'%(self.kwargs['pk']))
         self.object = form.save()

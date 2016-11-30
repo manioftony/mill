@@ -29,12 +29,7 @@
         
         <h2><i class="glyphicon glyphicon-user"></i> Recruitment information</h2>
 
-        <div class="box-icon">
-            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
-            <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                    class="glyphicon glyphicon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
+
     </div>
     <div class="box-content">
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -48,9 +43,24 @@
     <tbody>
 {% for i in object_list %}
     <tr>
-        <td>{{i.position}}<br>Javasel{{i.id}}<br><br><span class="label label-success">Open</span><br></td>
-        <td class="center">{{i.customer_created}}<br><br><span class="label label-info">In progress</span></td>
-        <td class="center">{{i.no_of_profile}}<br><br><span class="label label-danger">open</span></td>
+        <td>{{i.unique_id}}<br><br>
+
+        {% if i.current_status == None %}
+            <a href="/{{i.id}}/">Open</a><br>
+        {% endif %}
+        </td>
+        
+        <td class="center"><br><br>
+            {% if i.current_status == 1 %}
+            <span class="label label-info"><a href="">In progress</a></span>
+            {% endif %}
+        </td>
+        
+        <td class="center"><br><br>
+            {% if i.current_status == 2 %}
+            <span class="label label-danger"><a href="">closed</a></span>
+            {% endif %}
+        </td>
     </tr>
 {% endfor %}
     </tbody>

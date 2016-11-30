@@ -27,7 +27,7 @@ def user_login(request):
         if user is not None :
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/org-list/')
+                return HttpResponseRedirect('/masterdata/company/list')
             else:
                 message = "User is not active"
         else:
