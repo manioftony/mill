@@ -99,7 +99,7 @@ class Requirement(Base):
     type_of_opening = models.CharField(max_length=100, blank=True, null=True)
     salary_range = models.CharField(max_length=100, blank=True, null=True)
     unique_id = models.CharField(null=True, max_length=100, unique=True)
-
+    resume = models.FileField(upload_to='static/resume/img/%Y/%m/%d',blank=True, null=True)
     def __unicode__(self):
         return self.position
 

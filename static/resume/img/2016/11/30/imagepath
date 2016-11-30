@@ -1,0 +1,20 @@
+ssh 54.146.150.41:8069
+sftp://ubuntu@54.46.150.41
+sudo ssh -i "machine.pem" ubuntu@54.146.150.41
+
+
+sudo cp logo.png /opt/openerp/odoo/openerp/addons/base/res/res_company_logo.png
+sudo cp logo.png /opt/openerp/odoo/doc/_extensions/odoo/static/img/odoo_logo_rgb.png
+sudo cp logo.png /opt/openerp/odoo/openerp/addons/base/static/img/logo_white.png
+sudo cp logo.png /opt/openerp/odoo/addons/payment_paypal/static/src/img/paypal_logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/point_of_sale/static/src/img/logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/payment_sips/static/src/img/sips_logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/payment_adyen/static/src/img/logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/im_chat/static/src/img/logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/web/static/src/img/logo2.png
+sudo cp logo.png /opt/openerp/odoo/addons/web/static/src/img/nologo.png
+sudo cp logo.png /opt/openerp/odoo/addons/web/static/src/img/logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/payment_buckaroo/static/src/img/logo.png
+sudo cp logo.png /opt/openerp/odoo/addons/website/static/src/img/openerp_logo.png
+
+

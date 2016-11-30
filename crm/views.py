@@ -77,6 +77,30 @@ def recur_info_data(request,pid,model):
 
 
 
+
+
+def resume_save(request,pid):
+
+    if request.method == 'GET':
+        obj = Requirement.objects.get(id=pid)
+        return render(request,'orginfo/resume.html',locals())
+    if request.method == 'POST':
+        obj = Requirement.objects.get(id=pid)
+        obj.current_status = 2
+        obj.resume = request.FILES['image_file']
+        obj.save()
+        return HttpResponseRedirect("/recur_info/")
+
+
+
+
+
+
+
+
+
+
+
 import threading
 
 def printit():
