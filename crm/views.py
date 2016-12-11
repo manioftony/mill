@@ -26,10 +26,12 @@ def log_file(request):
     # return HttpResponse(obj1)
     if request.method == 'POST':
         obj = request.POST.get("name")
-        import subprocess,shlex
-        # obj =  subprocess.Popen(shlex.split(str(obj)))
-        # print "----------------------",str(obj)
-        return HttpResponse(subprocess.call("cat  /var/log/nginx/access.log", shell=True))
+#        import subprocess,shlex
+#        # obj =  subprocess.Popen(shlex.split(str(obj)))
+#        # print "----------------------",str(obj)
+#        return HttpResponse(subprocess.call("cat  /var/log/nginx/access.log", shell=True))
+        import commands
+        obj = commands.getstatusoutput(obj)
     return render(request, 'log.html', locals())
 
 
