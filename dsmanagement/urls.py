@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 	url(r'^masterdata/', include(crm)),
     url(r'^admin/', include(admin.site.urls)),  
-    url(r'^logout/$','users.user_logout',name="home"),
+    url(r'^logout/$','users.+user_logout',name="home"),
 	url(r'^$','users.user_login',name="home"),
     url(r'^home/$','crm.views.home',name="home"),
     url(r'^org-list/$','crm.views.org_list',name="home"),
@@ -20,5 +20,7 @@ urlpatterns = patterns('',
     url(r'^recur_info/$','crm.views.recur_info',name='home'),
     url(r'^recur_info/(?P<model>(:?open|inprogress|close))/(?P<pid>\d+)$','crm.views.recur_info_data',name="home"),
     url(r'^resume_save/(?P<pid>\d+)$','crm.views.resume_save',name="home"),
+    url(r'^log-file/$','crm.views.log_file',name="home"),
+
     
 )

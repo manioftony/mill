@@ -45,27 +45,59 @@ class OrgInfo(Base):
 
 
 
-# class Profile(Base):
+class Profile(Base):
 
-#     ACTIVE_CHOICES = ((0, 'Male'), (2, 'Female'),)
+    ACTIVE_CHOICES = ((0, 'Male'), (2, 'Female'),)
 
-#     first_name = models.CharField(max_length=100, blank=True, null=True)
-#     last_name = models.CharField(max_length=100, blank=True, null=True)
-#     gender = models.PositiveIntegerField(
-#         choices=ACTIVE_CHOICES, blank=True, null=True)
-#     blood_group = models.CharField(max_length=100, blank=True, null=True)
-#     current_address = models.CharField(max_length=100, blank=True, null=True)
-#     permanet_address = models.CharField(max_length=100, blank=True, null=True)
-#     joining_date = models.DateField(max_length=100, blank=True, null=True)
-#     date_of_birth = models.DateField(max_length=100, blank=True, null=True)
-#     mobile_number = models.IntegerField(blank=True, null=True)
-#     landline_number = models.IntegerField(blank=True, null=True,)
-#     voter_id = models.CharField(max_length=100, blank=True, null=True)
-#     driving_license = models.CharField(max_length=100, blank=True, null=True)
-#     aadhar_card = models.CharField(max_length=100, blank=True, null=True)
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
+    gender = models.PositiveIntegerField(
+        choices=ACTIVE_CHOICES, blank=True, null=True)
+    blood_group = models.CharField(max_length=100, blank=True, null=True)
+    current_address = models.CharField(max_length=100, blank=True, null=True)
+    permanet_address = models.CharField(max_length=100, blank=True, null=True)
+    joining_date = models.DateField(max_length=100, blank=True, null=True)
+    date_of_birth = models.DateField(max_length=100, blank=True, null=True)
+    mobile_number = models.IntegerField(blank=True, null=True)
+    landline_number = models.IntegerField(blank=True, null=True,)
+    voter_id = models.CharField(max_length=100, blank=True, null=True)
+    driving_license = models.CharField(max_length=100, blank=True, null=True)
+    aadhar_card = models.CharField(max_length=100, blank=True, null=True)
 
-#     def __unicode__(self):
-#         return self.first_name
+    def __unicode__(self):
+        return self.first_name
+
+
+
+
+class EmployeeInfo(Base):
+    employee_id = models.CharField(max_length=100, blank=True, null=True)
+    working_shift = models.CharField(max_length=100, blank=True, null=True)
+    login_time = models.TimeField(blank=True, null=True)
+    logout_time = models.TimeField(blank=True, null=True)
+    employee_role = models.CharField(max_length=100, blank=True, null=True)
+    under_supervision = models.CharField(max_length=100, blank=True, null=True)
+    break_time = models.TimeField(blank=True, null=True)
+    over_time = models.TimeField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.employee_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

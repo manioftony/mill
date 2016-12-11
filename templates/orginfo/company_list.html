@@ -55,21 +55,26 @@
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
-        {% if view.kwargs.model == 'company' %}
-            <th>Name</th>
-            <th>Address</th>
-            <th>Location</th>
-            <th>Type Of Company</th>
-        {% elif view.kwargs.model == 'requirement' %}
+        {% if view.kwargs.model == 'profile' %}
+            <th>First Name</th>
+            <th>Gender</th>
+            <th>Blood Group</th>
+            <th>Current Address</th>
+            <th>Date Of Birth</th>
+            <th>Mobile Number</th>
+            <th>Aadhaar Card</th>
+            <th>Status</th> 
+            <th>Actions</th>
+        {% elif view.kwargs.model == 'employeeinfo' %}
 
-            <th>Position</th>
-            <th>No.of Openings</th>
-            <th>Technology</th>
-            <th>Skills</th>
-            <th>Experience</th>
-            <th>Location</th>
-            <th>Type of Opening</th>
-            <th>Salary Range</th>
+            <th>Employee Id</th>
+            <th>Working Shift</th>
+            <th>Login Time</th>
+            <th>Logout Time</th>
+            <th>Employee Role</th>
+            <th>Under Supervision</th>
+            <th>Break Time</th>
+            <th>Over Time</th>
 
 
         {% endif %}        
@@ -101,22 +106,56 @@
         </tr>
     {% endfor %}
 
-{% elif view.kwargs.model == 'requirement' %}
+{% elif view.kwargs.model == 'employeeinfo' %}
 
 
     {% for i in object_list %}
         <tr>
-            <td>{{i.position}}</td>
-            <td class="center">{{i.no_openings}}</td>
-            <td class="center">{{i.technology}}</td>
-            <td class="center">{{i.skills}}</td>
-            <td class="center">{{i.experience}}</td>
-            <td class="center">{{i.location}}</td>
-            <td class="center">{{i.type_of_opening}}</td>
-            <td class="center">{{i.salary_range}}</td>
+            <td>{{i.employee_id}}</td>
+            <td class="center">{{i.working_shift}}</td>
+            <td class="center">{{i.login_time}}</td>
+            <td class="center">{{i.logout_time}}</td>
+            <td class="center">{{i.employee_role}}</td>
+            <td class="center">{{i.under_supervision}}</td>
+            <td class="center">{{i.break_time}}</td>
+            <td class="center">{{i.over_time}}</td>
         </tr>
     {% endfor %}
 
+
+
+{% elif view.kwargs.model == 'profile' %}
+
+    {% for i in object_list %}
+        <tr>
+            <td>{{i.first_name}}</td>
+            <td class="center">{{i.gender}}</td>
+            <td class="center">{{i.blood_group}}</td>
+            <td class="center">{{i.current_address}}</td>
+            <td class="center">{{i.date_of_birth}}</td>
+            <td class="center">{{i.mobile_number}}</td>
+            <td class="center">{{i.aadhar_card}}</td>
+            <td class="center">
+                <span class="label-warning label label-default">Pending</span>
+            </td>
+            <td class="center">
+                <a class="btn btn-success" href="#">
+                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                    View
+                </a>
+                <a class="btn btn-info" href="#">
+                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="#">
+                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                    Delete
+                </a>
+        </td>
+
+
+        </tr>
+    {% endfor %}
 
 {% endif %}
 
