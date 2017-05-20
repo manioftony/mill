@@ -1,4 +1,6 @@
+from __future__ import division
 from django.db import models
+
 
 # Create your models here.
 
@@ -79,7 +81,7 @@ class EmployeeInfo(Base):
     under_supervision = models.CharField(max_length=100, blank=True, null=True)
     break_time = models.TimeField(blank=True, null=True)
     over_time = models.TimeField(blank=True, null=True)
-
+    total_working_hour_per_day = models.IntegerField(blank=True, null=True)
     def __unicode__(self):
         return self.employee_id
 
@@ -89,11 +91,19 @@ class EmployeeInfo(Base):
 
 
 
+class Production(Base):
+    kg = models.IntegerField(max_length=100, blank=True, null=True)
+    date = models.DateField(max_length=100, blank=True, null=True)
 
+    def __unicode__(self):
+        return '%s'%(self.kg)
 
+    def total_loss(self):
+        # from __future__ import division
+        return round((7/100)*self.kg)
 
-
-
+    def yarn_output(self):
+        return round((93/100)*self.kg)
 
 
 

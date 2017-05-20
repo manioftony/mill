@@ -1,3 +1,4 @@
+from __future__ import division
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from crm.models import *
@@ -33,6 +34,34 @@ def log_file(request):
         import commands
         obj = commands.getstatusoutput(obj)
     return render(request, 'log.html', locals())
+
+
+
+
+
+def production_list(request):
+    if request.method == 'GET':
+        obj = Production.objects.all()
+        total = sum([i.kg for i in Production.objects.all()])
+        loss  = round((7/100)*total)
+        yarn = sum([i.yarn_output() for i in Production.objects.all()])
+
+        return render(request, 'masterdata/production_list.html', locals())
+
+
+
+
+def production_data(request):
+    if request.method == 'GET':
+        return render(request, 'masterdata/production_add.html', locals())
+    if request.method == 'POST':
+        # import ipdb;ipdb.set_trace()
+        kg = request.POST.get('kg')
+        date = request.POST.get('date')
+        obj = Production.objects.create(kg=kg,date=date)
+        return HttpResponseRedirect("/production-list/")
+
+
 
 
 

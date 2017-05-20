@@ -129,7 +129,7 @@
     {% for i in object_list %}
         <tr>
             <td>{{i.first_name}}</td>
-            <td class="center">{{i.gender}}</td>
+            <td class="center">{% if i.gender == 0 %} Male {% else %} Female {% endif %} </td>
             <td class="center">{{i.blood_group}}</td>
             <td class="center">{{i.current_address}}</td>
             <td class="center">{{i.date_of_birth}}</td>
@@ -145,7 +145,8 @@
                 </a>
                 <a class="btn btn-info" href="#">
                     <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
+                    <a href="/masterdata/profile/update/{{i.id}}">
+                    Edit</a>
                 </a>
                 <a class="btn btn-danger" href="#">
                     <i class="glyphicon glyphicon-trash icon-white"></i>

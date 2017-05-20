@@ -27,7 +27,8 @@ def user_login(request):
         if user is not None :
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/sales-list/')
+                # return HttpResponseRedirect('/sales-list/')
+                return HttpResponse('hi')
             else:
                 message = "User is not active"
         else:

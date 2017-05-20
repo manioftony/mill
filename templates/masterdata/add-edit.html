@@ -1,7 +1,127 @@
 {% extends "base.html" %}
-
-
 {% block midpart %}
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="/static/js/jquery.datepick.js"></script>
+
+
+
+
+
+<style type="text/css">
+    
+.error{
+    width: 181px;
+    color: red;
+}
+
+</style>
+
+
+<script>
+
+
+
+
+
+
+
+$(function(){
+
+
+    $('#ngo_form').validate({
+
+        rules : {
+            first_name : {
+            required:true
+            },
+
+            gender : {
+            required:true
+            },
+
+
+            blood_group:{
+                required:true
+            },
+
+            current_address:{
+                required:true
+            },
+
+
+            permanet_address:{
+                required:true
+            },
+
+
+            joining_date:{
+                required:true
+            },
+
+
+            date_of_birth:{
+                required:true
+            },
+
+
+            mobile_number:{
+                required:true
+            },
+
+
+            landline_number:{
+                required:true
+            },
+
+
+
+            voter_id:{
+                required:true
+            },
+
+
+            driving_license:{
+                required:true
+            },
+
+
+            aadhar_cards:{
+                required:true
+            },
+
+
+
+
+
+
+
+            last_name: {
+            email : true,
+            required:true,
+            },
+
+            phone:{
+                required:true,
+                digits: true,
+                minlength:10,
+                maxlength:10
+            },
+
+            description:{
+                required:true
+            },
+
+        }
+    });
+});
+
+
+</script>
+
 
 
 
@@ -47,6 +167,7 @@
 					 	    {% endfor %} 
 
 					 	    <br>
+                    <input type="text" id="datepicker">
 				     <button type="submit" class="btn btn-default">{% if edit %}Update{% else %}Submit{% endif %}</button>
 				     <button type="button" class="btn close-fancybox btn-default">Cancel</button> 
 				</form>
